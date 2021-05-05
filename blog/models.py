@@ -23,7 +23,7 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=350)
     slug = models.SlugField(max_length=450, null=True, unique_for_date='publish')
     category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
     content = models.TextField(null=True)
