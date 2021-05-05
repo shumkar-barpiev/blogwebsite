@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="main-wrapper">
+	    <section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <h2 class="heading" >Кош келиңиз...</h2>
+			    <div class="intro">Биз программалоо дүйнөсүнө кадам таштап жаткандар үчүн жана өзүн ар тараптан өнүктүрүүнү каалагандар үчүн жардам кылуу максаты менен  блогдорду жасайбыз.</p></div>
+				<hr>
+				<h2 style="float:left;">Категория:</h2>
+			    <div class="signup-form form-inline justify-content-center pt-3">
+					<button class="btn btn-primary m-1"><a style="color:white" href="/"><i class="fas fa-bookmark fa-fw mr-2"></i>БААРЫСЫ</a></button>
+
+					{% for c in categories %}
+                    <button class="btn btn-primary m-1"><a style="color:white" href="{{ c.get_absolute_url }}"><i class="fas fa-bookmark fa-fw mr-2"></i>{{ c.name }}</a></button>
+                	{% endfor %}
+				</div>
+		    </div><!--//container-->
+	    </section>
+	    <section class="blog-list px-3 py-5 p-md-5">
+		    <div class="container">
+				{% for post in posts %}
+						<div class="item mb-5">
+							<div class="media">
+								<img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'images/bloglogo.jpg' %}" alt="image">
+								<div class="media-body">
+									<h3 class="title mb-1"><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h3>
+									<p>{{post.slug}}</p>
+									<div class="meta mb-1"><hr></div>
+									<a class="more-link" href="{{ post.get_absolute_url }}">Көбүрөөк окуу &rarr;</a>
+								</div><!--//media-body-->
+							</div><!--//media-->
+						</div>
+				{% endfor %}
+		    </div>
+	    </section>
+	    <footer class="footer text-center py-2 theme-bg-dark">
+	        <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can buy the commercial license via our website: themes.3rdwavemedia.com */-->
+                <small class="copyright">&copy; All rights reserved <p>email: {{my.email}}</p> </small>
+
+	    </footer>
+    </div><!--//main-wrapper-->
+{% endblock %}
